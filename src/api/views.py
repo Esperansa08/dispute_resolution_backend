@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from api.mixins import CreteListModelViewSet
+from api.pagination import DisputePagination
 from api.serializers import (
     CommentSerializer,
     CustomUserSerializer,
@@ -52,6 +53,7 @@ class DisputeViewSet(ModelViewSet):
     """A viewset that provides CRUD operations for disputes."""
 
     serializer_class = DisputeSerializer
+    pagination_class = DisputePagination
     http_method_names = ['get', 'post', 'patch', 'delete']
     parser_class = [MultiPartParser, FormParser]
 
