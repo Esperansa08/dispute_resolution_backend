@@ -2,27 +2,18 @@ from datetime import datetime
 
 from django.shortcuts import get_object_or_404
 from djoser.views import UserViewSet
-
-from rest_framework.response import Response
-
-
-from rest_framework.viewsets import ModelViewSet
-
-
 from rest_framework import status
 from rest_framework.parsers import FormParser, MultiPartParser
-
+from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 
 from api.mixins import CreteListModelViewSet
-
-
-
-from api.pagination import DisputePagination
 from api.serializers import (
     CommentSerializer,
     CustomUserSerializer,
     DisputeSerializer,
-    PatchDisputeSerializer,)
+    PatchDisputeSerializer,
+)
 from disputes.models import Comment, Dispute
 from users.models import CustomUser
 
@@ -61,7 +52,6 @@ class DisputeViewSet(ModelViewSet):
     """A viewset that provides CRUD operations for disputes."""
 
     serializer_class = DisputeSerializer
-    pagination_class = DisputePagination
     http_method_names = ['get', 'post', 'patch', 'delete']
     parser_class = [MultiPartParser, FormParser]
 
